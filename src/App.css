@@ -1,20 +1,21 @@
-/*Its a simplified version of Dracula*/
 :root {
-  --background: #282A36;
-  --grey: #44475a;
-  --white: #f8f8f2;
-  --dark-white: #f8f8f2ef;
-  --dark-blue: #6272a4;
-  --cyan: #8be9fd;
-  --green: #50fa7b;
-  --orange: #ffb86c;
-  --pink: #ff79c6;
-  --purple: #bd93f9;
-  --red: #ff5555;
-  --yellow: #f1fa8c;
+  --background: #0f2027;
+  --grey: #203a43;
+  --white: #e0e0e0;
+  --dark-white: #b0b0b0;
+  --dark-blue: #2c5364;
+  --cyan: #4fbdba;
+  --green: #3aafa9;
+  --orange: #def2f1;
+  --pink: #17252a;
+  --purple: #2b7a78;
+  --red: #ff6b6b;
+  --yellow: #45b7d1;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -37,26 +38,24 @@ h1 {
   width: 100%;
 }
 
-.flex {
-  display: flex;
-}
-
 .todoinput {
   flex: 1;
   padding: 0.5rem;
   margin: 0.5rem;
   border: 2px solid var(--purple);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: var(--white);
+  width: 100%;
 }
 
 .submitButton {
   margin: 0.5rem;
   height: 100%;
   padding: 0.5rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: var(--background);
-  color: var(--white)
+  color: var(--white);
+  transition: background-color 0.3s ease;
 }
 
 .submitButton:hover {
@@ -74,9 +73,10 @@ h1 {
   height: 100%;
   min-width: 5rem;
   padding: 0.5rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: var(--background);
-  color: var(--white)
+  color: var(--white);
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
@@ -95,8 +95,8 @@ h1 {
 
 .c-cb label {
   vertical-align: center;
-  flex:1;
-  margin: auto ;
+  flex: 1;
+  margin: auto;
 }
 
 .c-cb > input[type="checkbox"] {
@@ -114,6 +114,87 @@ todo-list {
 }
 
 label {
-  word-wrap:break-word;
+  word-wrap: break-word;
+}
 
+/* Todo Styling */
+.todo {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--grey);
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.todo-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.todo-description {
+  width: 100%;
+  margin-top: 0.5rem;
+  color: var(--orange);
+  font-size: 0.9rem;
+  word-wrap: break-word;
+}
+
+.todo-label {
+  margin-left: 1rem;
+  flex-grow: 1;
+  text-align: left;
+  font-size: 1.2rem;
+  word-break: break-word;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+/* Form Styling */
+.todoform .todo {
+  background-color: var(--grey);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.todoform .btn-group {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Action Buttons Styling */
+.todo-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-edit,
+.btn-delete {
+  background: none;
+  outline: none;
+  color: var(--dark-blue);
+  padding: 0.25rem;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.btn-edit:hover {
+  color: var(--green);
+}
+
+.btn-delete:hover {
+  color: var(--red);
+}
+
+.btn-edit svg,
+.btn-delete svg {
+  width: 1.2rem;
+  height: 1.2rem;
 }

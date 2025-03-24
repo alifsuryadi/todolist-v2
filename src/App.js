@@ -10,11 +10,12 @@ function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
   const [filter, setFilter] = useState("All");
 
-  const addTask = (name) => {
+  const addTask = (name, description) => {
     if (name === "") return;
     const newTask = {
       id: `task-${nanoid()}`,
       name: name,
+      description: description || "",
       completed: false,
     };
     setTasks([...tasks, newTask]);
@@ -36,10 +37,14 @@ function App(props) {
     setTasks(remainingTasks);
   };
 
-  const editTask = (id, newName) => {
+  const editTask = (id, newName, newDescription) => {
     const updatedTasks = tasks.map((task) => {
       if (id === task.id) {
-        return { ...task, name: newName };
+        return {
+          ...task,
+          name: newName,
+          description: newDescription,
+        };
       }
       return task;
     });
@@ -52,6 +57,7 @@ function App(props) {
       <Todo
         id={task.id}
         name={task.name}
+        description={task.description}
         completed={task.completed}
         key={task.id}
         toggleTaskCompleted={toggleTaskCompleted}
@@ -69,9 +75,11 @@ function App(props) {
     />
   ));
 
-  const countString = `${tasks.length} ${
-    tasks.length === 1 ? "task" : "tasks"
-  } remaining`;
+  const filteredTasks = tasks.filter(props.FILTER_MAP[filter]);
+
+  const countString = `${filteredTasks.length} ${
+    filteredTasks.length === 1 ? "task" : "tasks"
+  } ${filter !== "Completed" ? "remaining" : "completed"}`;
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(tasks));
@@ -80,7 +88,7 @@ function App(props) {
 
   return (
     <div className="todoapp">
-      <h1>Todont</h1>
+      <h1>My Todo List</h1>
       <Form addTask={addTask} />
       <div className="filters btn-group stack-exception flex">{filterList}</div>
 

@@ -5,9 +5,30 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 const todoDetails = JSON.parse(localStorage.getItem("todos")) || [
-  { id: "todo-0", name: "Sugondese", completed: false },
-  { id: "todo-1", name: "Ligma", completed: false },
-  { id: "todo-2", name: "Joe", completed: false },
+  {
+    id: "todo-0",
+    name: "Belajar React",
+    description: "Pelajari dasar-dasar React dan komponen",
+    completed: false,
+  },
+  {
+    id: "todo-1",
+    name: "Olahraga Pagi",
+    description: "Jogging atau senam selama 30 menit di pagi hari",
+    completed: false,
+  },
+  {
+    id: "todo-2",
+    name: "Baca Buku",
+    description: "Baca buku self-improvement selama satu jam",
+    completed: false,
+  },
+  {
+    id: "todo-3",
+    name: "Persiapan Presentasi",
+    description: "Siapkan materi presentasi untuk proyek kantor",
+    completed: false,
+  },
 ];
 
 const FILTER_MAP = {
