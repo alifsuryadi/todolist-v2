@@ -1,37 +1,60 @@
-# Todont
+# My Todo List
 
-A simple todolist app based on the MDN React tutorial.  
+A modern, responsive todo list application built with React, featuring intuitive task management and local storage persistence.
 
-[Use Todont](https://todont.zachmanson.com)
+## 🌟 Features
 
-Hosted using Vercel, though that's really overkill for something so simple.
+- Create, edit, and delete tasks
+- Add detailed descriptions to tasks
+- Mark tasks as complete/incomplete
+- Filter tasks (All, Active, Completed)
+- Responsive design
+- Local storage support
+- Dracula-inspired color theme
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Quick Start
 
-## Building
+### Prerequisites
 
-In the project directory, you can run:
+- Node.js (v14 or later)
+- npm (v6 or later)
 
-### `npm start`
+### Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the repository
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+git clone https://github.com/alifsuryadi/my-todo-list.git
+```
 
-### `npm test`
+2. Navigate to the project directory
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+cd my-todo-list
+```
 
-### `npm run build`
+3. Install dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the development server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm start
+```
 
+### 🛠 Available Scripts
+
+- `npm start`: Runs the app in development mode
+- `npm test`: Launches the test runner
+- `npm run build`: Builds the app for production
+
+### 🔧 Technologies Used
+
+- React
+- React Hooks
+- Local Storage
+- Nanoid (for unique ID generation)
+- CSS Custom Properties

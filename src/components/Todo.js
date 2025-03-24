@@ -1,96 +1,92 @@
 import React, { useState } from "react";
+import { FaEdit, FaTrash, FaSave, FaTimes } from "react-icons/fa";
 
 export default function Todo(props) {
-  console.log("props.name:" + props.name);
   const [newName, setNewName] = useState(props.name);
-  console.log("newName:" + newName);
-  console.log("props.completed:" + props.completed);
-
-  function handleChange(e) {
-    setNewName(e.target.value);
-  }
+  const [newDescription, setNewDescription] = useState(props.description);
+  const [isEditing, setEditing] = useState(false);
 
   function handleSubmit(e) {
-    console.log("handling submit");
     e.preventDefault();
-    props.editTask(props.id, newName);
-    setNewName("");
+    props.editTask(props.id, newName, newDescription);
     setEditing(false);
   }
 
-  const [isEditing, setEditing] = useState(false);
-
   const editingTemplate = (
-    <form className="stack-small" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label className="todo-label" htmlFor={props.id}></label>
-        <input
-          id={props.id}
-          className="todo-text todoinput"
-          type="text"
-          value={newName}
-          onChange={handleChange}
-        />
-      </div>
+    <form className="todo" onSubmit={handleSubmit}>
+      <input
+        id={`${props.id}-name`}
+        className="todoinput mb-2"
+        type="text"
+        value={newName}
+        onChange={(e) => setNewName(e.target.value)}
+        placeholder="Todo title"
+      />
+      <textarea
+        id={`${props.id}-description`}
+        className="todoinput"
+        rows="4"
+        value={newDescription}
+        onChange={(e) => setNewDescription(e.target.value)}
+        placeholder="Description (optional)"
+      />
       <div className="btn-group">
         <button
           type="button"
-          className="btn todo-cancel"
+          className="btn todo-cancel flex items-center"
           onClick={() => {
             setNewName(props.name);
+            setNewDescription(props.description);
             setEditing(false);
           }}
         >
-          Cancel
+          <FaTimes className="mr-2" /> Cancel
         </button>
         <button
           type="submit"
-          className="btn btn__primary todo-edit"
-          onClick={() => {
-            props.editTask(props.id, newName);
-            setEditing(false);
-          }}
+          className="btn btn__primary todo-edit flex items-center"
         >
-          Save
+          <FaSave className="mr-2" /> Save
         </button>
       </div>
     </form>
   );
 
   const viewTemplate = (
-    <div className="todo stack-small">
-      <div className="c-cb">
-        <input
-          id={props.id}
-          type="checkbox"
-          className="checkbox"
-          defaultChecked={props.completed}
-          onChange={() => props.toggleTaskCompleted(props.id)}
-        />
-        <label className="todo-label" htmlFor={props.id}>
-          {props.name}
-        </label>
+    <div className="todo">
+      <div className="todo-content flex justify-between items-center">
+        <div className="flex items-center flex-1">
+          <input
+            id={props.id}
+            type="checkbox"
+            className="checkbox"
+            checked={props.completed}
+            onChange={() => props.toggleTaskCompleted(props.id)}
+          />
+          <label className="todo-label flex-grow" htmlFor={props.id}>
+            {props.name}
+          </label>
+        </div>
+        <div className="todo-actions flex">
+          <button
+            type="button"
+            className="btn btn-edit mr-2"
+            onClick={() => setEditing(true)}
+          >
+            <FaEdit />
+          </button>
+          <button
+            type="button"
+            className="btn btn-delete"
+            onClick={() => props.deleteTask(props.id)}
+          >
+            <FaTrash />
+          </button>
+        </div>
       </div>
-      <div className="btn-group">
-        <button
-          type="button"
-          className="btn"
-          onClick={() => {
-            setEditing(true);
-          }}
-        >
-          Edit
-        </button>
-        <button
-          type="button"
-          className="btn btn__danger"
-          onClick={() => {
-            props.deleteTask(props.id);
-          }}
-        >
-          Delete
-        </button>
-      </div>
+      {props.description && (
+        <div className="todo-description">{props.description}</div>
+      )}
     </div>
   );
 
