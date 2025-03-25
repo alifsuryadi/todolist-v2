@@ -24,13 +24,13 @@ A modern, responsive todo list application built with React, featuring intuitive
 1. Clone the repository
 
 ```bash
-git clone https://github.com/alifsuryadi/my-todo-list.git
+git clone https://github.com/alifsuryadi/todolist-v2.git
 ```
 
 2. Navigate to the project directory
 
 ```bash
-cd my-todo-list
+cd todolist-v2
 ```
 
 3. Install dependencies
